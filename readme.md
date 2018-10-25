@@ -10,12 +10,16 @@
 * [Azure.Functions.TableBindings.Demo](/Azure.Functions/TableBindings.Demo/readme.md)
 
 
+ 
 
-## Good reading 
+## Tools 
 
-* [Azure DevOps Documentation](https://docs.microsoft.com/en-us/azure/devops/)
+* [Postman App](https://www.getpostman.com/) - Manually Test / View you function responses.
 
 
 ## Automation
+
+* [Azure DevOps Documentation](https://docs.microsoft.com/en-us/azure/devops/)
+
 
 [![Build Status](https://dev.azure.com/markogdev/Microsoft.Samples/_apis/build/status/Microsoft.Samples)](https://dev.azure.com/markogdev/Microsoft.Samples/_build/latest?definitionId=2)

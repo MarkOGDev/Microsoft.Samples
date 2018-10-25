@@ -48,7 +48,33 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
             return new JsonResult(poco);
         }
 
-         
+
+
+        /// <summary>
+        /// Alterantive Version show how to allow Content Negotioation. If the request has an Accept header of 'application/xml' the response will be returned in XML.
+        /// You can test this easily using 'PostMan App'
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="poco"></param>
+        /// <param name="log"></param>
+        /// <param name="PartitionKey"></param>
+        /// <param name="RowKey"></param>
+        /// <returns></returns>
+        [FunctionName("TableGetRowJsonOrXml")]
+        public static ActionResult TableGetRowJsonOrXml(
+           [HttpTrigger(AuthorizationLevel.Function, "get", Route = "TableGetRowJsonOrXml/{PartitionKey}/{RowKey}")] HttpRequest req,       //Trigger Route expects two parameters in Nice Url Style    
+           [Table("TableBinding", "{PartitionKey}", "{RowKey}")] MyPoco poco,                                                      //poco is the object that will be returned from the table
+           ILogger log,
+           string PartitionKey,                                                                //pass the params into the function so we can use them if nessasary. 
+           string RowKey)
+        { 
+            return poco != null
+               ? (ActionResult)new OkObjectResult(poco)
+               : new BadRequestObjectResult("Data not found.");
+        }
+
+
+
         /// <summary>
         ///  Returns All rows from a Partition of a Table.
         /// </summary>
