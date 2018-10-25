@@ -1,0 +1,148 @@
+
+
+
+        //public class RadioStationEntity : TableEntity
+        //{
+        //    //#### Entity COnstructors #####
+
+        //    /// <summary>
+        //    /// Initializes a new instance of the <see cref="RadioStationEntity"/> class.
+        //    /// Your entity type must expose a parameter-less constructor
+        //    /// </summary>
+        //    public RadioStationEntity()
+        //    {
+
+        //    }
+
+
+        //    /// <summary>
+        //    /// Initializes a new instance of the <see cref="RadioStationEntity"/> class.
+        //    /// Defines the PK and RK.
+        //    /// </summary>
+        //    /// <param name="countryCode"></param>
+        //    /// <param name="channelNumber"></param>
+        //    public RadioStationEntity(string countryCode, int channelNumber)
+        //    {
+        //        this.PartitionKey = countryCode;
+        //        this.RowKey = channelNumber.ToString();
+        //    }
+
+
+        //    //#### Entity Properties #####
+
+        //    /// <summary>
+        //    /// Gets or sets the Station Name
+        //    /// A property for use in Table storage must be a public property of a 
+        //    /// supported type that exposes both a getter and a setter.     
+        //    /// </summary>
+        //    /// <value>
+        //    /// The station Name.
+        //    /// </value>
+        //    public string Name { get; set; }
+
+        //    /// <summary>
+        //    /// Gets or sets the Web URL of the Station Home Page
+        //    /// </summary>       
+        //    /// <value>
+        //    /// The station Station Home Page Url.
+        //    /// </value>
+        //    public string Url { get; set; }
+
+        //    /// <summary>
+        //    /// The Web Play URL of the Station. The url to connect to in order to listen to the station.
+        //    /// </summary>
+        //    /// <value>
+        //    /// The PlayUrl  
+        //    /// </value>
+        //    public string PlayUrl { get; set; }
+
+        //    /// <summary>
+        //    /// The Local Frequency of the Radio Station. E.g. 89.9 FM
+        //    /// </summary>
+        //    public string Frequency { get; set; }
+
+        //    /// <summary>
+        //    /// Station Description
+        //    /// </summary>
+        //    /// <value>
+        //    /// The Description Text
+        //    /// </value>
+        //    public string Description { get; set; }
+
+        //    public string ImageUrl { get; set; }
+
+        //    /// <summary>
+        //    /// We Could have a category for stations, but where to get cat info from? 
+        //    /// </summary>
+        //    public string Category
+        //    {
+        //        get;
+        //        set;
+        //    }
+
+
+        //    /// <summary>
+        //    /// Returns the Partition Key
+        //    /// </summary>
+        //    /// <returns></returns>
+        //    public string GetCountryCode()
+        //    {
+        //        return this.PartitionKey;
+        //    }
+
+        //    /// <summary>
+        //    ///  Returns the Channel Number
+        //    /// </summary>
+        //    /// <returns></returns>
+        //    public string GetChannelNumber()
+        //    {
+        //        return this.RowKey;
+        //    }
+
+
+        //}
+
+
+
+        ///// <summary>
+        ///// Returns Radio Stations By Country. CountryCode is the Partition Key of the Azure Table.
+        ///// </summary>
+        ///// <param name="req"></param>
+        ///// <param name="cloudTable"></param>
+        ///// <param name="log"></param>
+        ///// <param name="countryCode"></param>
+        ///// <returns></returns>
+        //[FunctionName("ByCountry")]
+        //public static async Task<JsonResult> ByCountry(
+        //    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "byCountry/{countryCode}")] HttpRequest req,
+        //    [Table("OnlineRadio")] CloudTable cloudTable,
+        //    ILogger log,
+        //    string countryCode)
+        //{
+        //    log.LogInformation($"C# HTTP trigger function processed a request. ByCountry {countryCode}");
+
+        //    //Define the Table Query   
+        //    var query = new TableQuery<RadioStationEntity>();
+        //    //GenerateFilterCondition creates a string  
+        //    query.Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, countryCode));
+
+        //    //loop through all data 
+        //    TableContinuationToken continueToken = null;        //we could use the continueToken to cancell the request if we meet a condition we dont like.
+        //    var entities = new List<RadioStationEntity>();
+
+        //    do
+        //    {
+        //        //ExecuteQuerySegmentedAsync
+        //        //https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-how-to-use-dotnet#retrieve-entities-in-pages-asynchronously
+        //        var queryResult = await cloudTable.ExecuteQuerySegmentedAsync(query, continueToken);
+        //        entities.AddRange(queryResult);
+        //        continueToken = queryResult.ContinuationToken;
+
+        //    } while (continueToken != null);
+
+        //    //Return Json Formatted Data
+        //    return new JsonResult(entities);
+        //}
+
+
+

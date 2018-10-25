@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Functions.HttpTrigger.Demo", "Azure.Functions\HttpTrigger.Demo\Azure.Functions.HttpTrigger.Demo.csproj", "{D216D4BE-CCFC-4EAF-B0AB-A6BDFB421BFF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Functions.TableBindings.Demo", "Azure.Functions\TableBindings.Demo\Azure.Functions.TableBindings.Demo.csproj", "{87B8638F-2BEC-42B7-ADA9-77FE2B7B5897}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Functions.UnitTestProject", "Azure.Functions\HttpTriggerUnitTestProject\Azure.Functions.UnitTestProject.csproj", "{92264ECF-E753-46B3-8443-8A6FB0E1B6A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure.Functions", "Azure.Functions", "{2704600F-E838-4CFF-9195-1CC0D938D03D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{CEA72FE1-537F-4BF0-8472-1EED6E3E32C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D216D4BE-CCFC-4EAF-B0AB-A6BDFB421BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D216D4BE-CCFC-4EAF-B0AB-A6BDFB421BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D216D4BE-CCFC-4EAF-B0AB-A6BDFB421BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D216D4BE-CCFC-4EAF-B0AB-A6BDFB421BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87B8638F-2BEC-42B7-ADA9-77FE2B7B5897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B8638F-2BEC-42B7-ADA9-77FE2B7B5897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87B8638F-2BEC-42B7-ADA9-77FE2B7B5897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87B8638F-2BEC-42B7-ADA9-77FE2B7B5897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92264ECF-E753-46B3-8443-8A6FB0E1B6A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92264ECF-E753-46B3-8443-8A6FB0E1B6A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92264ECF-E753-46B3-8443-8A6FB0E1B6A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92264ECF-E753-46B3-8443-8A6FB0E1B6A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D216D4BE-CCFC-4EAF-B0AB-A6BDFB421BFF} = {2704600F-E838-4CFF-9195-1CC0D938D03D}
+		{87B8638F-2BEC-42B7-ADA9-77FE2B7B5897} = {2704600F-E838-4CFF-9195-1CC0D938D03D}
+		{92264ECF-E753-46B3-8443-8A6FB0E1B6A7} = {2704600F-E838-4CFF-9195-1CC0D938D03D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA8660AB-3D50-46C9-8995-8272D9CF89E3}
+	EndGlobalSection
+EndGlobal
