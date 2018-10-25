@@ -10,3 +10,7 @@
 * [Azure.Functions.TableBindings.Demo](/Azure.Functions/TableBindings.Demo/readme.md)
 
 
+
+## Good reading 
+
+* [Azure DevOps Documentation](https://docs.microsoft.com/en-us/azure/devops/)
