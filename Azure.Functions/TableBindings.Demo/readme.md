@@ -163,6 +163,7 @@ Example Url:
 
 TODO:
 
+move to git hub repo.
+
 Setup cont. depolyment from team services
 
-publish to github

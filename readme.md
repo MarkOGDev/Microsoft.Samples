@@ -23,3 +23,16 @@
 
 
 [![Build Status](https://dev.azure.com/markogdev/Microsoft.Samples/_apis/build/status/Microsoft.Samples)](https://dev.azure.com/markogdev/Microsoft.Samples/_build/latest?definitionId=2)
+
+
+
+
+
+https://docs.microsoft.com/en-us/azure/devops/pipelines/build/repository?view=vsts
+we can deploy an individual project in this solution by createing a build in Azure portal, NOT uisng Yaml.
+YAML builds don't support tagging sources.
+
+Tagging sources let you point to a project to create artifact.
+
+then publish the artifact tothe function app.
+
