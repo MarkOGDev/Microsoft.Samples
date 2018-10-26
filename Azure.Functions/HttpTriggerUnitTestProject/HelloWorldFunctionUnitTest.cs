@@ -5,7 +5,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using MarkOGDev.Microsoft.Samples.Azure.Functions.HttpTrigger.Demo;
 
-
 namespace Azure.Functions.UnitTestProject
 {
     [TestClass]
@@ -19,7 +18,7 @@ namespace Azure.Functions.UnitTestProject
         {
             var _log = new Mock<ILogger>();
             var _req = new Mock<HttpRequest>();
-            var _name = "Peter";                //Test name Parameter
+            var _name = "Peter";                                                //Name Parameter
 
             var result = HelloWorldFunctions.HelloWorld3(req: _req.Object, log: _log.Object, name: _name);
 
