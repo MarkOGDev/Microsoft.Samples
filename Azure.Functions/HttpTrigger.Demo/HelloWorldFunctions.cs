@@ -19,9 +19,7 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.HttpTrigger.Demo
         //https://httptriggerdemo.azurewebsites.net/api/hello3/Mark
         //Functions add api automatically to url
         //We can change the default prefix: https://docs.microsoft.com/en-us/sandbox/functions-recipes/routes?tabs=csharp
-
-
-
+               
         /// <summary>
         /// Hello World.
         /// <para>Configured for Get Requests</para>
@@ -34,7 +32,7 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.HttpTrigger.Demo
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "hello1")] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("HelloWorld1() C# HTTP trigger function processed a request.");
+            log.LogInformation("HelloWorld1() with route 'hello1/' C# HTTP trigger function processed a request.");
 
             string name = req.Query["name"];
 
