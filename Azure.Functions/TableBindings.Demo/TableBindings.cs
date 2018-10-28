@@ -134,7 +134,7 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
 
             } while (token != null);
 
-            //Return Json Formatted Data
+            //Return Json Formatted Data.
             return new JsonResult(entities);
         }
 
