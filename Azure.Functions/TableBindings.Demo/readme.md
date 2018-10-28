@@ -159,11 +159,4 @@ Example Url:
 * http://localhost:7071/api/ListAllWithWrappers
 
 
-
-
-TODO:
-
-move to git hub repo.
-
-Setup cont. depolyment from team services
-
+ 
