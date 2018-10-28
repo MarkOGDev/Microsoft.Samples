@@ -29,10 +29,20 @@
 
 
 https://docs.microsoft.com/en-us/azure/devops/pipelines/build/repository?view=vsts
-we can deploy an individual project in this solution by createing a build in Azure portal, NOT uisng Yaml.
-YAML builds don't support tagging sources.
 
-Tagging sources let you point to a project to create artifact.
+We can deploy an individual project in this solution by createing a build in Azure portal, NOT uisng Yaml.
+YAML builds don't support tagging sources (at this time Oct 2018).
 
-then publish the artifact tothe function app.
+Tagging sources let you point to a project to create an artifact.
+
+Then publish the artifact to the function app.
+
+
+
+## Second Repo
+We are using Micorsoft team Services to manage our codebase, automate building and deployment.
+
+We are alos pusshing the codebase to a second repo in Github for Public viewing. 
+
+You can add a second Repo to your project by adding a second Remote to the Repo and pushing a Baranch to the new repo.
 
