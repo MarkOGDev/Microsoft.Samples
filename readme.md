@@ -27,8 +27,9 @@
 
 
 
+* [Azure Build pipeline source repositories](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/repository?view=vsts)
+* [What is Azure Pipelines release service](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/what-is-release-management?view=vsts)
 
-https://docs.microsoft.com/en-us/azure/devops/pipelines/build/repository?view=vsts
 
 We can deploy an individual project in this solution by createing a build in Azure portal, NOT uisng Yaml.
 YAML builds don't support tagging sources (at this time Oct 2018).
