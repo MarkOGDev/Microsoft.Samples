@@ -55,10 +55,10 @@ File: [HelloWorldFunction.cs](/HelloWorldFunction.cs)
 ```c#
 [FunctionName("HelloWorld1")]
 public static IActionResult HelloWorld1(
-    [HttpTrigger(AuthorizationLevel.Function, "get", Route = "hello1")] HttpRequest req,
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "hello1")] HttpRequest req,
     ILogger log)
 {
-    log.LogInformation("C# HTTP trigger function processed a request.");
+    log.LogInformation("HelloWorld1() with route 'hello1/' C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
 
@@ -99,10 +99,10 @@ Posted Data may look like this:
 ```c#
 [FunctionName("HelloWorld2")]
 public static async Task<IActionResult> HelloWorld2(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "hello2")] HttpRequest req,
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "hello2")] HttpRequest req,
     ILogger log)
 {
-    log.LogInformation("C# HTTP trigger function processed a request.");
+    log.LogInformation("HelloWorld2() C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
 
@@ -140,11 +140,11 @@ public static async Task<IActionResult> HelloWorld2(
 ```c#
 [FunctionName("HelloWorld3")]
 public static IActionResult HelloWorld3(
-    [HttpTrigger(AuthorizationLevel.Function, "get", Route = "hello3/{name}")] HttpRequest req,
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "hello3/{name}")] HttpRequest req,
     ILogger log,
     string name)
 {
-    log.LogInformation("C# HTTP trigger function processed a request.");
+        log.LogInformation("HelloWorld3() C# HTTP trigger function processed a request.");
 
     return (ActionResult)new OkObjectResult($"Hello, {name}");
 }

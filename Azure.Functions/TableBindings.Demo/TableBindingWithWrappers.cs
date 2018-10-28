@@ -25,9 +25,7 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
            [Table("TableBinding")] CloudTable cloudTable,
            ILogger log)
         {
-
             log.LogInformation("YO AzureWebJobsStorage Setting = " + System.Environment.GetEnvironmentVariable("AzureWebJobsStorage"));
-            log.LogInformation("YO marksVar Setting = " + System.Environment.GetEnvironmentVariable("marksVar"));
             log.LogInformation($"cloudTable.Name = {cloudTable.Name}");
 
             //Using Azure.Data.Wrappers 

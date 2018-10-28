@@ -57,7 +57,6 @@ public static JsonResult TableGetRow(
     //Return Json Formatted Data
     return new JsonResult(poco);
 }
-
 ```
 
 Example Url:
@@ -103,25 +102,24 @@ Example Url:
 ### Table List All
 ```c#
 [FunctionName("TableListAll")]
-    public static async System.Threading.Tasks.Task<JsonResult> TableListAll(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TableListAll")] HttpRequest req,
-    [Table("TableBinding")] CloudTable cloudTable,
-    ILogger log)
-    { 
-        TableContinuationToken token = null;
-        var entities = new List<MyPoco>();
-        do
-        {
-            var queryResult = await cloudTable.ExecuteQuerySegmentedAsync(new TableQuery<MyPoco>(), token);
-            entities.AddRange(queryResult);
-            token = queryResult.ContinuationToken;
+public static async System.Threading.Tasks.Task<JsonResult> TableListAll(
+[HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TableListAll")] HttpRequest req,
+[Table("TableBinding")] CloudTable cloudTable,
+ILogger log)
+{   
+    TableContinuationToken token = null;
+    var entities = new List<MyPoco>();
+    do
+    {
+        var queryResult = await cloudTable.ExecuteQuerySegmentedAsync(new TableQuery<MyPoco>(), token);
+        entities.AddRange(queryResult);
+        token = queryResult.ContinuationToken;
 
-        } while (token != null);
+    } while (token != null);
 
-        //Return Json Formatted Data
-        return new JsonResult(entities);
-
-    }
+    //Return Json Formatted Data
+    return new JsonResult(entities);
+}
 ```
 
 Example Url:
@@ -133,26 +131,31 @@ Example Url:
 
 ```c#
 [FunctionName("ListAllWithWrappers")]
-    public static async System.Threading.Tasks.Task<JsonResult> ListAllWithWrappers(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "ListAllWithWrappers")] HttpRequest req,
-        [Table("TableBinding")] CloudTable cloudTable,
-        ILogger log)
-    {            
-        //Using Azure.Data.Wrappers 
+public static async System.Threading.Tasks.Task<JsonResult> ListAllWithWrappers(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "ListAllWithWrappers")] HttpRequest req,
+    [Table("TableBinding")] CloudTable cloudTable,
+    ILogger log)
+{
 
-        //get stroage account string from env/app settings
-        CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(System.Environment.GetEnvironmentVariable("AzureWebJobsStorage"));
+    log.LogInformation("YO AzureWebJobsStorage Setting = " + System.Environment.GetEnvironmentVariable("AzureWebJobsStorage"));
+    log.LogInformation($"cloudTable.Name = {cloudTable.Name}");
 
-        //Create the Azure.Data.Wrappers.TableStorage Obejct 
-        Azure.Data.Wrappers.TableStorage _myTableStorage = new Azure.Data.Wrappers.TableStorage(cloudTable.Name, cloudStorageAccount);
+    //Using Azure.Data.Wrappers 
 
-        //Define and execute query
-        var query = new Microsoft.WindowsAzure.Storage.Table.TableQuery<MyPoco2>();
-        var results = await _myTableStorage.Query<MyPoco2>(query);
+    //get stroage account string from env/app settings
+    CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(System.Environment.GetEnvironmentVariable("AzureWebJobsStorage"));
 
-        //Return Json Formatted Data
-        return new JsonResult(results);
-    }
+    //Create the Azure.Data.Wrappers.TableStorage Obejct 
+    TableStorage _myTableStorage = new TableStorage(cloudTable.Name, cloudStorageAccount);
+
+    //Define and execute query
+    var query = new TableQuery<MyPoco2>();
+    var results = await _myTableStorage.Query<MyPoco2>(query);
+
+    //Return Json Formatted Data
+    return new JsonResult(results);
+
+}
 ```
 
 Example Url:
