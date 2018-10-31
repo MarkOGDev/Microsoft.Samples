@@ -1,5 +1,7 @@
 ﻿# Azure Functions V2 - HTTP Trigger Example
 
+[Functions Introduction](../../Docs/functionsIntroductionReadme.md)
+
 
 This example code shows you how to make **Azure Functions V2** with an **Http Trigger**.
 
@@ -11,6 +13,7 @@ Required / useful tools for this example are:
 * [Visual Studio](https://visualstudio.microsoft.com/)
 * [Azure Storage Emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator)
 * [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)
+* [Postman App](https://www.getpostman.com/) (Manually test and view your Azure Function responses)
 
 ## Creating a Function 
 

@@ -1,5 +1,7 @@
 ﻿# Azure Functions V2 - Azure Table Binding Example
 
+[Functions Introduction](../../Docs/functionsIntroductionReadme.md)
+
 This example code shows you how to make **Azure Functions V2** with both **Http Trigger** and **Azure Tbale Binding**.
 
 An HttpTrigger will trigger a function to run in response to an incomming Http Request.
@@ -12,7 +14,8 @@ Required / useful tools for this example are:
 * [Visual Studio](https://visualstudio.microsoft.com/)
 * [Azure Storage Emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator)
 * [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)
- 
+* [Postman App](https://www.getpostman.com/) (Manually test and view your Azure Function responses)
+
    
 ## Http Trigger With Table Binding
 
