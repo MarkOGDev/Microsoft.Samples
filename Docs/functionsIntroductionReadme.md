@@ -1,6 +1,6 @@
 # Azure Functions V2
 
-[Samples Home](../readme.md)
+[Back to Microsoft Samples Home](../readme.md)
 
 * [Azure.Functions.HttpTrigger.Demo Project](../Azure.Functions/HttpTrigger.Demo/readme.md)
   [![Build Status](https://markogdev.visualstudio.com/Microsoft.Samples/_apis/build/status/Azure.Functions.HttpTrigger.Demo)](https://markogdev.visualstudio.com/Microsoft.Samples/_build/latest?definitionId=3)

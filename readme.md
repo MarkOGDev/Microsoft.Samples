@@ -3,7 +3,7 @@
 *Created by MarkOGDev*
  
  
-## Azure Functions
+## Azure Functions Demos
 
 * [Function Samples Introduction](Docs/functionsIntroductionReadme.md)
 * [Azure.Functions.HttpTrigger.Demo Project](Azure.Functions/HttpTrigger.Demo/readme.md)
@@ -12,8 +12,15 @@
   [![Build Status](https://markogdev.visualstudio.com/Microsoft.Samples/_apis/build/status/Azure.Functions.TableBindings.Demo)](https://markogdev.visualstudio.com/Microsoft.Samples/_build/latest?definitionId=4)
 
  
+ ## Blazor Demos
+ 
+ Comming Soon.....
 
-### Azure Devops Automation 
+
+
+
+
+## Azure Devops Automation 
 
 We are using Azure Devops to manage our codebase and achieve **Continuous Integration and Continuous Deployment**.
 (i.e. automate building, testing and deployment.)

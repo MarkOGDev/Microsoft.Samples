@@ -1,6 +1,6 @@
 ﻿# Azure Functions V2 - Azure Table Binding Example
 
-[Functions Introduction](../../Docs/functionsIntroductionReadme.md)
+[Back to Functions Introduction](../../Docs/functionsIntroductionReadme.md)
 
 This example code shows you how to make **Azure Functions V2** with both **Http Trigger** and **Azure Tbale Binding**.
 
