@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.Types;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -9,22 +10,13 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
 {
+    /// <summary>
+    /// Table Bindings Demos
+    /// </summary>
     public static class TableBindings
-    {
-
-        //## Using Table Entity. Our POCO inherits TableEntity which adds the Partition Key, RowKey, Timestamp and eTag.
-        public class MyPoco : TableEntity
-        {
-            public string Name { get; set; }
-            public string Job { get; set; }
-        }
-
-
+    { 
         /// <summary>
-        /// Returns a Row of data from Table Storage (Table Binding) in Response to a Http Url Request (Http Trigger)
-        /// Example Url:
-        ///  http://localhost:7071/api/TableGetRow/{PartitionKey}/{RowKey}
-        ///  http://localhost:7071/api/TableGetRow/London/JoeJoe
+        /// Returns a Row of data from Table Storage (Table Binding) in Response to a HTTP URL Request (HTTP Trigger)        
         /// </summary>
         /// <param name="req"></param>
         /// <param name="poco"></param>
@@ -34,24 +26,21 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
         /// <returns></returns>
         [FunctionName("TableGetRow")]
         public static JsonResult TableGetRow(
-            [HttpTrigger(AuthorizationLevel.Function, "get", Route = "TableGetRow/{PartitionKey}/{RowKey}")] HttpRequest req,       //Trigger Route expects two parameters in Nice Url Style    
-            [Table("TableBinding", "{PartitionKey}", "{RowKey}")] MyPoco poco,                                                      //poco is the object that will be returned from the table
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TableGetRow/{PartitionKey}/{RowKey}")] HttpRequest req,          
+            [Table("TableBinding", "{PartitionKey}", "{RowKey}")] MyPoco poco,                                                      
             ILogger log,
-            string PartitionKey,                                                                //pass the params into the function so we can use them if nessasary. 
+            string PartitionKey,                                                         
             string RowKey)
         {
-            //Log Query and Reult Info
             log.LogInformation($"Hello: Query PartitionKey={PartitionKey} and Query RowKey={RowKey}");
             log.LogInformation($"PK={poco.PartitionKey}, RK={poco.RowKey}, Name={poco.Name}, Job={poco.Job}");
 
-            //Return Json Formatted Data
             return new JsonResult(poco);
         }
-
-
+                  
 
         /// <summary>
-        /// Alterantive Version show how to allow Content Negotioation. If the request has an Accept header of 'application/xml' the response will be returned in XML.
+        /// Alternative Version show how to allow Content Negotiation. If the request has an Accept header of 'application/XML' the response will be returned in XML.
         /// You can test this easily using 'PostMan App'
         /// </summary>
         /// <param name="req"></param>
@@ -62,12 +51,15 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
         /// <returns></returns>
         [FunctionName("TableGetRowJsonOrXml")]
         public static ActionResult TableGetRowJsonOrXml(
-           [HttpTrigger(AuthorizationLevel.Function, "get", Route = "TableGetRowJsonOrXml/{PartitionKey}/{RowKey}")] HttpRequest req,       //Trigger Route expects two parameters in Nice Url Style    
-           [Table("TableBinding", "{PartitionKey}", "{RowKey}")] MyPoco poco,                                                      //poco is the object that will be returned from the table
+           [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TableGetRowJsonOrXml/{PartitionKey}/{RowKey}")] HttpRequest req,       
+           [Table("TableBinding", "{PartitionKey}", "{RowKey}")] MyPoco poco,                                                     
            ILogger log,
-           string PartitionKey,                                                                //pass the params into the function so we can use them if nessasary. 
+           string PartitionKey,                                                                
            string RowKey)
-        { 
+        {
+            log.LogInformation($"Hello: Query PartitionKey={PartitionKey} and Query RowKey={RowKey}");
+            log.LogInformation($"PK={poco.PartitionKey}, RK={poco.RowKey}, Name={poco.Name}, Job={poco.Job}");
+
             return poco != null
                ? (ActionResult)new OkObjectResult(poco)
                : new BadRequestObjectResult("Data not found.");
@@ -104,7 +96,6 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
 
             } while (continueToken != null);
 
-            //Return Json Formatted Data
             return new JsonResult(entities);
         }
 
@@ -123,7 +114,7 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TableListAll")] HttpRequest req,
         [Table("TableBinding")] CloudTable cloudTable,
         ILogger log)
-        {   
+        {
             TableContinuationToken token = null;
             var entities = new List<MyPoco>();
             do
@@ -138,6 +129,14 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
             return new JsonResult(entities);
         }
 
+
+
+
+        //TODO:
+        //Document  function TableGetRowJsonOrXml
+        //Make insert , update,delete demos
+
+        //Add error handling/error messages
 
     }
 }

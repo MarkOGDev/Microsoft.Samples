@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo</name>
+    </assembly>
+    <members>
+        <member name="T:MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.TableBindings">
+            <summary>
+            Table Bindings Demos
+            </summary>
+        </member>
+        <member name="M:MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.TableBindings.TableGetRow(Microsoft.AspNetCore.Http.HttpRequest,MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.Types.MyPoco,Microsoft.Extensions.Logging.ILogger,System.String,System.String)">
+            <summary>
+            Returns a Row of data from Table Storage (Table Binding) in Response to a HTTP URL Request (HTTP Trigger)        
+            </summary>
+            <param name="req"></param>
+            <param name="poco"></param>
+            <param name="log"></param>
+            <param name="PartitionKey"></param>
+            <param name="RowKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.TableBindings.TableGetRowJsonOrXml(Microsoft.AspNetCore.Http.HttpRequest,MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.Types.MyPoco,Microsoft.Extensions.Logging.ILogger,System.String,System.String)">
+            <summary>
+            Alternative Version show how to allow Content Negotiation. If the request has an Accept header of 'application/XML' the response will be returned in XML.
+            You can test this easily using 'PostMan App'
+            </summary>
+            <param name="req"></param>
+            <param name="poco"></param>
+            <param name="log"></param>
+            <param name="PartitionKey"></param>
+            <param name="RowKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.TableBindings.TableListByPartition(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.WindowsAzure.Storage.Table.CloudTable,Microsoft.Extensions.Logging.ILogger,System.String)">
+            <summary>
+             Returns All rows from a Partition of a Table.
+            </summary>
+            <param name="req"></param>
+            <param name="cloudTable"></param>
+            <param name="log"></param>
+            <param name="PartitionKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.TableBindings.TableListAll(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.WindowsAzure.Storage.Table.CloudTable,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Returns All rows from a Table.
+            </summary>
+            <param name="req"></param>
+            <param name="cloudTable"></param>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.TableBindingWithWrappers">
+            <summary>
+            Examples of Azure Table Binding With Azure.Data.Wrappers.
+            </summary>
+        </member>
+        <member name="M:MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.TableBindingWithWrappers.ListAllWithWrappers(Microsoft.AspNetCore.Http.HttpRequest,Microsoft.WindowsAzure.Storage.Table.CloudTable,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Returns All data from a cloudTable
+            Using Azure.Data.Wrappers to 
+            </summary>
+            <param name="req"></param>
+            <param name="cloudTable"></param>
+            <param name="log"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.Types.MyPoco">
+            <summary>
+            Example Class representing a table row.
+            <para>MyPoco inherits TableEntity which adds the Partition Key, RowKey, TimeStamp and eTag.</para>
+            </summary>
+        </member>
+        <member name="P:MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.Types.MyPoco.Name">
+            <summary>
+            Example Property
+            </summary>
+        </member>
+        <member name="P:MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.Types.MyPoco.Job">
+            <summary>
+            Example Property
+            </summary>
+        </member>
+    </members>
+</doc>

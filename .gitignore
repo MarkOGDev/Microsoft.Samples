@@ -260,5 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 
-# Custom Ignor Routes
+# Custom Ignore Routes
 blazor/
+readmeDeveloper.md

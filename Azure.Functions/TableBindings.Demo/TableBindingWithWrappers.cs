@@ -1,5 +1,6 @@
 
 using Azure.Data.Wrappers;
+using MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo.Types;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -10,15 +11,19 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
 {
+    /// <summary>
+    /// Examples of Azure Table Binding With Azure.Data.Wrappers.
+    /// </summary>
     public static class TableBindingWithWrappers
-    {
-        public class MyPoco2 : TableEntity
-        {
-            public string Name { get; set; }
-            public string Job { get; set; }
-        }
-
-
+    { 
+        /// <summary>
+        /// Returns All data from a cloudTable
+        /// Using Azure.Data.Wrappers to 
+        /// </summary>
+        /// <param name="req"></param>
+        /// <param name="cloudTable"></param>
+        /// <param name="log"></param>
+        /// <returns></returns>
         [FunctionName("ListAllWithWrappers")]
         public static async System.Threading.Tasks.Task<JsonResult> ListAllWithWrappers(
            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "ListAllWithWrappers")] HttpRequest req,
@@ -30,15 +35,15 @@ namespace MarkOGDev.Microsoft.Samples.Azure.Functions.TableBindings.Demo
 
             //Using Azure.Data.Wrappers 
 
-            //get stroage account string from env/app settings
+            //get storage account string from ENV/app settings
             CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(System.Environment.GetEnvironmentVariable("AzureWebJobsStorage"));
 
-            //Create the Azure.Data.Wrappers.TableStorage Obejct 
+            //Create the Azure.Data.Wrappers.TableStorage Object 
             TableStorage _myTableStorage = new TableStorage(cloudTable.Name, cloudStorageAccount);
 
             //Define and execute query
-            var query = new TableQuery<MyPoco2>();
-            var results = await _myTableStorage.Query<MyPoco2>(query);
+            var query = new TableQuery<MyPoco>();
+            var results = await _myTableStorage.Query<MyPoco>(query);
 
             //Return Json Formatted Data
             return new JsonResult(results);

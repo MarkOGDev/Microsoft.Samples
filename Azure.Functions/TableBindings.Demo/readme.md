@@ -1,14 +1,15 @@
-﻿# Azure Functions V2 - Azure Table Binding Example
+﻿# C# Azure Functions V2 - Azure Table Binding Example
 
-[Back to Functions Introduction](../../Docs/functionsIntroductionReadme.md)
+[Back to Azure Functions Introduction](../readmeFunctionsIntro.md)
 
-This example code shows you how to make **Azure Functions V2** with both **Http Trigger** and **Azure Tbale Binding**.
+This example code shows you how to make **Azure Functions V2** with both **HTTP Trigger** and **Azure Table Binding**.
 
-An HttpTrigger will trigger a function to run in response to an incomming Http Request.
+An HttpTrigger will trigger a function to run in response to an incoming HTTP Request.
 
 The Table Binding will give us easy access to our Azure Table data.
 
 ## Development Tools
+
 Required / useful tools for this example are:
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
@@ -19,58 +20,118 @@ Required / useful tools for this example are:
    
 ## Http Trigger With Table Binding
 
-To add Table storage bindings to your project add Nuget package [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage)
+To add Table storage bindings to your project add NuGet package [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage)
 
 ## Example Code
 
+Local storage contains a table named "TableBinding" that looks like this:
 
+| PartitionKey  |  RowKey       |   Timestamp                | Name              |           Job     |
+| :--------:    | :-----:       |    :--------:              | :--------:        |  :-----:          |
+| London        |     JoeJoe    |    [TimeStamp Data]        | Joe Smooth Jenkins | Cook             | 
+| London        |     PeterSmith |   [TimeStamp Data]        |Peter Livingstone Smith |  Cleaner    | 
 
-In local storage I have a table named "TableBinding" that looks like this:
+We represent a Table Row with the following class:
 
-| PartitionKey  |  RowKey       | Name              |           Job     |
-| :--------:    | :-----:       | :--------:        |  :-----:          |
-| London        |     JoeJoe    | Joe Smooth Jenkins | Cook             | 
-| London        |     PeterSmith | Peter Livingstone Smith |  Cleaner    | 
+File: [Types/MyPoco.cs](Types/MyPoco.cs)
 
-File: [TableBindings.cs](TableBindings.cs)
-
-```c#
-public  class MyPoco : TableEntity
+```csharp
+public class MyPoco : TableEntity
 {
     public string Name { get; set; }
     public string Job { get; set; }
 }
 ```
 
+File: [TableBindings.cs](TableBindings.cs)
 
 ### Table Get Row
-```c# 
+
+```csharp
 [FunctionName("TableGetRow")]
 public static JsonResult TableGetRow(
-    [HttpTrigger(AuthorizationLevel.Function, "get", Route = "TableGetRow/{PartitionKey}/{RowKey}")] HttpRequest req,       //Trigger Route expects two parameters in Nice Url Style    
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TableGetRow/{PartitionKey}/{RowKey}")] HttpRequest req,        
     [Table("TableBinding", "{PartitionKey}", "{RowKey}")] MyPoco poco,                                                      //poco is the object that will be returned from the table
     ILogger log,
-    string PartitionKey,                                                                //pass the params into the function so we can use them if nessasary. 
+    string PartitionKey,                                                                 
     string RowKey)
-{
-    //Log Query and Reult Info
+{ 
     log.LogInformation($"Hello: Query PartitionKey={PartitionKey} and Query RowKey={RowKey}");
     log.LogInformation($"PK={poco.PartitionKey}, RK={poco.RowKey}, Name={poco.Name}, Job={poco.Job}");
-
-    //Return Json Formatted Data
+     
     return new JsonResult(poco);
 }
 ```
 
-Example Url:
-* http://localhost:7071/api/TableGetRow/{PartitionKey}/{RowKey}
-* http://localhost:7071/api/TableGetRow/London/JoeJoe
+```csharp
+[FunctionName("TableGetRow")]
+public static JsonResult TableGetRow(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TableGetRow/{PartitionKey}/{RowKey}")] HttpRequest req,        
+    [Table("TableBinding", "{PartitionKey}", "{RowKey}")] MyPoco poco,                                                      //poco is the object that will be returned from the table
+    ILogger log,
+    string PartitionKey,                                                                 
+    string RowKey)
+{ 
+    log.LogInformation($"Hello: Query PartitionKey={PartitionKey} and Query RowKey={RowKey}");
+    log.LogInformation($"PK={poco.PartitionKey}, RK={poco.RowKey}, Name={poco.Name}, Job={poco.Job}");
+     
+    return new JsonResult(poco);
+}
+```
+ 
+#### Route
 
-  
+```
+/api/TableGetRow/{PartitionKey}/{RowKey}
+```
+
+#### Example URL
+
+http://localhost:7071/api/TableGetRow/London/JoeJoe
+
+#### Live Demo URL
+
+https://tablebindingsdemo.azurewebsites.net/api/TableGetRow/London/JoeJoe
+
+
+
+
+### Table Get Row as XML or Json
+
+```csharp
+[FunctionName("TableGetRowJsonOrXml")]
+public static ActionResult TableGetRowJsonOrXml(
+    [HttpTrigger(AuthorizationLevel.Function, "get", Route = "TableGetRowJsonOrXml/{PartitionKey}/{RowKey}")] HttpRequest req,       //Trigger Route expects two parameters in Nice Url Style    
+    [Table("TableBinding", "{PartitionKey}", "{RowKey}")] MyPoco poco,                                                      //poco is the object that will be returned from the table
+    ILogger log,
+    string PartitionKey,                                                                //pass the params into the function so we can use them if nessasary. 
+    string RowKey)
+{ 
+    return poco != null
+        ? (ActionResult)new OkObjectResult(poco)
+        : new BadRequestObjectResult("Data not found.");
+}
+```
+
+#### Route
+
+```
+/api/TableListByPartition/{PartitionKey}
+```
+
+#### Example URL
+
+http://localhost:7071/api/TableListByPartition/London
+
+#### Live Demo URL
+
+https://tablebindingsdemo.azurewebsites.net/api/TableListByPartition/London
+
 
 
 ### Table List by Partition
-```c#
+
+```csharp
 [FunctionName("TableListByPartition")]
 public static async Task<JsonResult> TableListByPartition(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TableListByPartition/{PartitionKey}")] HttpRequest req,
@@ -97,13 +158,29 @@ public static async Task<JsonResult> TableListByPartition(
 }
 ```
 
-Example Url:
+Example URL:
 * http://localhost:7071/api/TableListByPartition/{PartitionKey}
 * http://localhost:7071/api/TableListByPartition/London
  
 
+#### Route
+
+```
+/api/TableListByPartition/{PartitionKey}
+```
+
+#### Example URL
+
+http://localhost:7071/api/TableListByPartition/London
+
+#### Live Demo URL
+
+https://tablebindingsdemo.azurewebsites.net/api/TableListByPartition/London
+
+
 ### Table List All
-```c#
+
+```csharp
 [FunctionName("TableListAll")]
 public static async System.Threading.Tasks.Task<JsonResult> TableListAll(
 [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TableListAll")] HttpRequest req,
@@ -125,14 +202,29 @@ ILogger log)
 }
 ```
 
-Example Url:
-* http://localhost:7071/api/TableListAll
+ 
+#### Route
 
+```
+/api/TableListAll
+```
+
+#### Example URL
+
+http://localhost:7071/api/TableListAll
+
+#### Live Demo URL
+
+https://tablebindingsdemo.azurewebsites.net/api/TableListAll
 
 
 ## Table Binding with Azure.Data.Wrappers
 
-```c#
+[Azure.Data.Wrappers](https://github.com/Microsoft/Azure.Data.Wrappers) provide Simplified Azure Storage usage.
+
+File: [TableBindings.cs](TableBindings.cs)
+
+```csharp
 [FunctionName("ListAllWithWrappers")]
 public static async System.Threading.Tasks.Task<JsonResult> ListAllWithWrappers(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "ListAllWithWrappers")] HttpRequest req,
@@ -161,8 +253,17 @@ public static async System.Threading.Tasks.Task<JsonResult> ListAllWithWrappers(
 }
 ```
 
-Example Url:
-* http://localhost:7071/api/ListAllWithWrappers
+#### Route
 
+```
+/api/ListAllWithWrappers
+```
 
+#### Example URL
+
+http://localhost:7071/api/ListAllWithWrappers
+
+#### Live Demo URL
+
+https://tablebindingsdemo.azurewebsites.net/api/ListAllWithWrappers
  

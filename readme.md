@@ -2,43 +2,43 @@
 
 *Created by MarkOGDev*
  
+
  
-## Azure Functions Demos
+## C# Azure Functions Demos
 
-* [Function Samples Introduction](Docs/functionsIntroductionReadme.md)
-* [Azure.Functions.HttpTrigger.Demo Project](Azure.Functions/HttpTrigger.Demo/readme.md)
-  [![Build Status](https://markogdev.visualstudio.com/Microsoft.Samples/_apis/build/status/Azure.Functions.HttpTrigger.Demo)](https://markogdev.visualstudio.com/Microsoft.Samples/_build/latest?definitionId=3)
-* [Azure.Functions.TableBindings.Demo Project](Azure.Functions/TableBindings.Demo/readme.md)
-  [![Build Status](https://markogdev.visualstudio.com/Microsoft.Samples/_apis/build/status/Azure.Functions.TableBindings.Demo)](https://markogdev.visualstudio.com/Microsoft.Samples/_build/latest?definitionId=4)
-
+See: [Function Samples Introduction](Azure.Functions/readmeFunctionsIntro.md)
+ 
  
  ## Blazor Demos
  
- Comming Soon.....
+ Coming Soon.....
 
 
 
+ 
 
+## Azure DevOps Automation 
 
-## Azure Devops Automation 
-
-We are using Azure Devops to manage our codebase and achieve **Continuous Integration and Continuous Deployment**.
+We are using Azure DevOps to manage our code base and achieve **Continuous Integration and Continuous Deployment**.
 (i.e. automate building, testing and deployment.)
+
+Read the following docs to learn how to set up automation:
 
 * [Azure DevOps Documentation](https://docs.microsoft.com/en-us/azure/devops/)
 * [Azure Build pipeline source repositories](https://docs.microsoft.com/en-us/azure/devops/pipelines/build/repository?view=vsts)
 * [What is Azure Pipelines release service](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/what-is-release-management?view=vsts)
 
 
-We can deploy an individual project from this solution by createing a build in Azure portal, NOT uisng Yaml.
+Note: We can deploy an individual project from this solution by creating a build in Azure portal, NOT using YAML.
 YAML builds don't support tagging sources (at this time Oct 2018).
 
 Tagging Sources let you point to a project to create an artifact that will be published to the Azure function app.
 
 
-### Second Repo
+### Secondary Repository
 
-We are also pushing the codebase to a second repo in **Github for Public Sharing**. 
+We are also pushing the code base to a second repository in **GitHub for Public Sharing**. 
 
-You can add a Second Repo to your project by adding a Second Remote to the Repo and pushing a branch to the new remote.
+You can add a Second Repository to your project by adding a Second Remote to the Repository and pushing a branch to the new remote.
 
+ 

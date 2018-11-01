@@ -10,12 +10,19 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.Functions.UnitTestProject", "Azure.Functions\HttpTriggerUnitTestProject\Azure.Functions.UnitTestProject.csproj", "{92264ECF-E753-46B3-8443-8A6FB0E1B6A7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure.Functions", "Azure.Functions", "{2704600F-E838-4CFF-9195-1CC0D938D03D}"
+	ProjectSection(SolutionItems) = preProject
+		Azure.Functions\readmeFunctionsIntro.md = Azure.Functions\readmeFunctionsIntro.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{CEA72FE1-537F-4BF0-8472-1EED6E3E32C2}"
+	ProjectSection(SolutionItems) = preProject
+		Blazor\readmeBlazorIntro.md = Blazor\readmeBlazorIntro.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E972DF8F-EACB-4E8C-B5BD-4F3980806A19}"
 	ProjectSection(SolutionItems) = preProject
 		readme.md = readme.md
+		readmeDeveloper.md = readmeDeveloper.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{80729B1D-E5B1-4800-98EA-88B6113B040A}"
@@ -24,17 +31,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorCoreHost", "BlazorCor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BlazorServersideCoreHost", "BlazorServersideCoreHost", "{561007DE-EBB4-41C6-864D-DD9B4C502BB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorDemo", "Blazor\Blazor\BlazorDemo\BlazorDemo.csproj", "{9DD5293B-CE56-49F0-86F1-C42105B6E061}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDemo", "Blazor\Blazor\BlazorDemo\BlazorDemo.csproj", "{9DD5293B-CE56-49F0-86F1-C42105B6E061}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorCoreHosted.Server", "Blazor\BlazorCoreHost\BlazorCoreHosted.Server\BlazorCoreHosted.Server.csproj", "{664AD925-05D3-4ABF-A081-4DE0A6398C78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCoreHosted.Server", "Blazor\BlazorCoreHost\BlazorCoreHosted.Server\BlazorCoreHosted.Server.csproj", "{664AD925-05D3-4ABF-A081-4DE0A6398C78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorCoreHosted.Client", "Blazor\BlazorCoreHost\BlazorCoreHosted.Client\BlazorCoreHosted.Client.csproj", "{96C9F2E0-93CE-4C53-925A-D7E113119A0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCoreHosted.Client", "Blazor\BlazorCoreHost\BlazorCoreHosted.Client\BlazorCoreHosted.Client.csproj", "{96C9F2E0-93CE-4C53-925A-D7E113119A0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorCoreHosted.Shared", "Blazor\BlazorCoreHost\BlazorCoreHosted.Shared\BlazorCoreHosted.Shared.csproj", "{059D5166-DEA7-468C-AF6A-DE2558C0D33A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCoreHosted.Shared", "Blazor\BlazorCoreHost\BlazorCoreHosted.Shared\BlazorCoreHosted.Shared.csproj", "{059D5166-DEA7-468C-AF6A-DE2558C0D33A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorServersideCoreHosted.Server", "Blazor\BlazorServersideCoreHost\BlazorServersideCoreHosted.Server\BlazorServersideCoreHosted.Server.csproj", "{BB9DDB7C-A58B-4F74-82EB-5BA1595AD9D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServersideCoreHosted.Server", "Blazor\BlazorServersideCoreHost\BlazorServersideCoreHosted.Server\BlazorServersideCoreHosted.Server.csproj", "{BB9DDB7C-A58B-4F74-82EB-5BA1595AD9D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorServersideCoreHosted.App", "Blazor\BlazorServersideCoreHost\BlazorServersideCoreHosted.App\BlazorServersideCoreHosted.App.csproj", "{994493AC-D24E-4ABD-B5B6-27A8433182D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServersideCoreHosted.App", "Blazor\BlazorServersideCoreHost\BlazorServersideCoreHosted.App\BlazorServersideCoreHosted.App.csproj", "{994493AC-D24E-4ABD-B5B6-27A8433182D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{DF9F973E-121E-424A-B300-15EC2237B36F}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\functionsIntroductionReadme.md = Docs\functionsIntroductionReadme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +107,7 @@ Global
 		{059D5166-DEA7-468C-AF6A-DE2558C0D33A} = {345988EF-AC19-40E5-9A53-2C4941CDA77D}
 		{BB9DDB7C-A58B-4F74-82EB-5BA1595AD9D0} = {561007DE-EBB4-41C6-864D-DD9B4C502BB6}
 		{994493AC-D24E-4ABD-B5B6-27A8433182D2} = {561007DE-EBB4-41C6-864D-DD9B4C502BB6}
+		{DF9F973E-121E-424A-B300-15EC2237B36F} = {E972DF8F-EACB-4E8C-B5BD-4F3980806A19}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DA8660AB-3D50-46C9-8995-8272D9CF89E3}

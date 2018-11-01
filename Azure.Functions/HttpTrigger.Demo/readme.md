@@ -1,43 +1,22 @@
-﻿# Azure Functions V2 - HTTP Trigger Example
+﻿# C# Azure Functions V2 - HTTP Trigger Example
 
-[Back to Functions Introduction](../../Docs/functionsIntroductionReadme.md)
+[Back to Azure Functions Introduction](../readmeFunctionsIntro.md)
 
+This following code shows examples of **Azure Functions V2** with an **HTTP Trigger**.
 
-This example code shows you how to make **Azure Functions V2** with an **Http Trigger**.
-
-An HttpTrigger will trigger a function to run in response to an incomming Http Request.
-
-## Development Tools
-Required / useful tools for this example are:
-
-* [Visual Studio](https://visualstudio.microsoft.com/)
-* [Azure Storage Emulator](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-emulator)
-* [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/)
-* [Postman App](https://www.getpostman.com/) (Manually test and view your Azure Function responses)
-
-## Creating a Function 
-
-You can create new functions in many ways. I prefer using Visual Studio.
-
-See [Create your first function using Visual Studio.](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-your-first-function-visual-studio)
-
-[Guides are available for Azure Portal, Visual Studio Code, Azure Cli and more.](https://docs.microsoft.com/en-us/azure/azure-functions/)
+An HttpTrigger will trigger a function to run in response to an incoming HTTP Request.
  
- 
-
 
 ## Example Code
 
 File: [HelloWorldFunction.cs](/HelloWorldFunction.cs)
 
-
 | Parameter name  |  Example  |
 | :--------:| :-----:|
 | name    |     Peter | 
  
-
-
 ### HelloWorld1 - Query String Parameters 
+
 * Configured for **Get** Requests
 * Requires a **name parameter** in the Query String
 
@@ -47,15 +26,17 @@ File: [HelloWorldFunction.cs](/HelloWorldFunction.cs)
 /api/hello1?name={name}
 ```
 
-#### Example Url
-* http://localhost:7071/api/hello1?name=Peter
+#### Example URL
 
-#### Live Url
-* https://httptriggerdemo.azurewebsites.net/api/hello1?name=Peter
+http://localhost:7071/api/hello1?name=Peter
+
+#### Live URL
+
+https://httptriggerdemo.azurewebsites.net/api/hello1?name=Peter
 
 #### HelloWorld1 C# Function Code
 
-```c#
+```csharp
 [FunctionName("HelloWorld1")]
 public static IActionResult HelloWorld1(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "hello1")] HttpRequest req,
@@ -72,8 +53,9 @@ public static IActionResult HelloWorld1(
 ```
 
 ### HelloWorld2 - Query String Parameters
+
 * Configured for **Get** and **Post** Requests
-* Requires a **name parameter** in the query string or **name paramter** posted in the request body.
+* Requires a **name parameter** in the query string or **name parameter** posted in the request body.
 
 Posted Data may look like this:
 ```json
@@ -88,18 +70,18 @@ Posted Data may look like this:
 /api/hello2?name={name}
 ```
 
-#### Example Url
+#### Example URL
 
-* http://localhost:7071/api/hello2?name=Peter
+http://localhost:7071/api/hello2?name=Peter
 
 
-#### Live Url
+#### Live URL
 
-* https://httptriggerdemo.azurewebsites.net/api/hello2?name=Peter
+https://httptriggerdemo.azurewebsites.net/api/hello2?name=Peter
 
 #### HelloWorld2 C# Function Code
 
-```c#
+```csharp
 [FunctionName("HelloWorld2")]
 public static async Task<IActionResult> HelloWorld2(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "hello2")] HttpRequest req,
@@ -119,10 +101,10 @@ public static async Task<IActionResult> HelloWorld2(
 }
 ```
 
-### HelloWorld3 - Nice Url Parameters
+### HelloWorld3 - Nice URL Parameters
 
 * Configured for **Get** Requests
-* Requires a **name value** in the url
+* Requires a **name value** in the URL
  
 #### Route
 
@@ -130,17 +112,17 @@ public static async Task<IActionResult> HelloWorld2(
 /api/hello3/{name}
 ```
 
-#### Example Url
+#### Example URL
 
-* http://localhost:7071/api/hello3/Peter
+http://localhost:7071/api/hello3/Peter
 
-#### Live Url
+#### Live URL
 
-* https://httptriggerdemo.azurewebsites.net/api/hello3/Peter
+https://httptriggerdemo.azurewebsites.net/api/hello3/Peter
 
 #### HelloWorld3 C# Function Code
 
-```c#
+```csharp
 [FunctionName("HelloWorld3")]
 public static IActionResult HelloWorld3(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "hello3/{name}")] HttpRequest req,
