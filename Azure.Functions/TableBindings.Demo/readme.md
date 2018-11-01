@@ -62,22 +62,6 @@ public static JsonResult TableGetRow(
     return new JsonResult(poco);
 }
 ```
-
-```csharp
-[FunctionName("TableGetRow")]
-public static JsonResult TableGetRow(
-    [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TableGetRow/{PartitionKey}/{RowKey}")] HttpRequest req,        
-    [Table("TableBinding", "{PartitionKey}", "{RowKey}")] MyPoco poco,                                                      //poco is the object that will be returned from the table
-    ILogger log,
-    string PartitionKey,                                                                 
-    string RowKey)
-{ 
-    log.LogInformation($"Hello: Query PartitionKey={PartitionKey} and Query RowKey={RowKey}");
-    log.LogInformation($"PK={poco.PartitionKey}, RK={poco.RowKey}, Name={poco.Name}, Job={poco.Job}");
-     
-    return new JsonResult(poco);
-}
-```
  
 #### Route
 
